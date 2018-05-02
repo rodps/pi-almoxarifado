@@ -25,3 +25,11 @@ label{
 	display: block;
 	margin-bottom: .2em;
 }
+.solicitacao-invalido{
+	background-color: lightcoral;
+	color: white
+	}
+
+.info-id{
+	visibility: hidden;
+}
