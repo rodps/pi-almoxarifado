@@ -36,6 +36,7 @@ router.get("/listar/solicitacoes", function (req, res) {
 
 router.get("/listar/solicitacoes/:id", function (req, res) {
    const id = req.params.id;
+        
     models.solicitacoes.findById(id).then(solicitacao =>{
         res.send(solicitacao);
     })
