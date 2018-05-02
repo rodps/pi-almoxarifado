@@ -60,7 +60,6 @@ router.post("/criar/requisicoes", function (req, res) {
                     requisicao_id:id_requisicao,
                     solicitacao_id:item,   
                 })
-                console.log(item);
             });
             models.solicitacao_requisicao.bulkCreate(lista).then(() => {
                  res.status(201).send("Requisicão Criada");
@@ -69,11 +68,11 @@ router.post("/criar/requisicoes", function (req, res) {
                 'no banco de dados.');
             })   
         
-        }).catch(ex => {
-            console.error(ex);
-            res.status(400).send('Não foi possível incluir a requisicao ' +
-                'no banco de dados.');
-        });
+     }).catch(ex => {
+        console.error(ex);
+        res.status(400).send('Não foi possível incluir a requisicao ' +
+            'no banco de dados.');
+     });
     
         
 });
