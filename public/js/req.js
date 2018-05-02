@@ -4,7 +4,9 @@ var idSolicitacao
 
 var solicitacaoTr = document.createElement("tr");
 var xhr = new XMLHttpRequest();
-xhr.open("GET", "https://raw.githubusercontent.com/LuizASSilveira/pi-almoxarifado/master/teste.json"); //tipo de requisição + end.
+
+xhr.open("GET", "http://localhost:3000/requisicoes/listar/solicitacoes"); //tipo de requisição + end.
+
 xhr.addEventListener("load", function(){
     var sol = JSON.parse(xhr.responseText);
     sol.forEach(function(solicitacao) {
@@ -34,26 +36,13 @@ var btdCarregar = document.querySelector("#newRequisicao");
 
     
     btdCarregar.addEventListener("click",function(){
-        var json = JSON.stringify(listRequisicao);
+        var json = JSON.stringify({"solicitacoes" : listRequisicao});
         console.log(json)
         
         var ajax = new XMLHttpRequest()
-        ajax.open("POST", "url", true)
+        ajax.open("POST", "http://localhost:3000/requisicoes/criar/requisicoes", true)
         ajax.setRequestHeader('Content-type','application/json; charset=utf-8');
-        
-        //erro
-        ajax.onload = function () {
-            var users = JSON.parse(ajax.responseText);
-            if (ajax.readyState == 4 && ajax.status == "201") {
-                console.table(users);
-            } else {
-                console.error(users);
-            }
-        }
-    //console.log("fumegano")
-    ajax.send({
-        "solicitacoes": json
-    })
+         ajax.send(json)
 })
 
 
