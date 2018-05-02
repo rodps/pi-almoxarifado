@@ -55,7 +55,7 @@ router.post("/criar/requisicoes", function (req, res) {
            let id_requisicao =_requisicao.numero;
          //  console.log(id_requisicao)
             let lista = []
-            req.body.requisicoes.forEach(function(item) {
+            req.body.solicitacoes.forEach(function(item) {
                 lista.push({
                     requisicao_id:id_requisicao,
                     solicitacao_id:item,   
