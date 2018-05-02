@@ -4,7 +4,7 @@ var models = require("../models");
 var Sequelize = require('sequelize');
 const Op = Sequelize.Op;
 
-router.get("/listarOrcamentos", function (req, res) {
+router.get("/listar/orcamentos", function (req, res) {
     models.orcamentos.findAll({
         include: [{
             model: models.solicitacoes,
@@ -18,7 +18,7 @@ router.get("/listarOrcamentos", function (req, res) {
 
 });
 
-router.get("/listarRequisicoes", function (req, res) {
+router.get("/listar/solicitacoes", function (req, res) {
 
     models.solicitacoes.findAll({
         include: [{
@@ -34,7 +34,14 @@ router.get("/listarRequisicoes", function (req, res) {
 
 });
 
+router.get("/listar/solicitacoes/:id", function (req, res) {
+   const id = req.params.id;
+    models.solicitacoes.findById(id).then(solicitacao =>{
+        res.send(solicitacao);
+    })
 
+
+});
 
 router.get("/", function (req, res) {
     res.render("requisicao");
