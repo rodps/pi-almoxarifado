@@ -38,10 +38,20 @@ router.get("/listar/solicitacoes/:id", function (req, res) {
    const id = req.params.id;
         
     models.solicitacoes.findById(id).then(solicitacao =>{
-        res.send(solicitacao);
-    })
+        if (solicitacao) {
+                res.status(200).json(solicitacao);
+            } else {
+                res.status(404).send('Solicitacao não encontrada.');
+            }
+        }).catch(ex => {
+            console.error(ex);
+            res.status(400).send('Não foi possível consultar a solicitacao.');
+        })
+        //res.send(solicitacao);
+});
 
-
+router.get("/", function (req, res) {
+    res.render("requisicao");
 });
 
 router.get("/", function (req, res) {

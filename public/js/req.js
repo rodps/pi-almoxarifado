@@ -1,7 +1,7 @@
 var solicitacaoTr = document.createElement("tr");
 
 var xhr = new XMLHttpRequest();
-xhr.open("GET", "http://localhost:3000/requisicoes/listarRequisicoes"); //tipo de requisição + end.
+xhr.open("GET", "http://localhost:3000/requisicoes/listar/solicitacoes"); //tipo de requisição + end.
 xhr.addEventListener("load", function(){
     var sol = JSON.parse(xhr.responseText);
     sol.forEach(function(solicitacao) {
