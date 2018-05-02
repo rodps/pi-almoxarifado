@@ -50,8 +50,29 @@ router.get("/listar/solicitacoes/:id", function (req, res) {
         //res.send(solicitacao);
 });
 
-router.get("/", function (req, res) {
-    res.render("requisicao");
+router.post("/criar/requisicoes", function (req, res) {
+    models.requisicoes.create({usuario_id : 1}).then((_requisicao) => {
+           let id_requisicao =_requisicao.numero;
+         //  console.log(id_requisicao)
+            let lista = []
+            req.body.requisicoes.forEach(function(item) {
+                lista.push({
+                    requisicao_id:id_requisicao,
+                    solicitacao_id:item,   
+                })
+                console.log(item);
+            });
+            models.solicitacao_requisicao.bulkCreate(lista).then(() => {
+                 res.status(201).send("Requisicão Criada");
+            })   
+        
+        }).catch(ex => {
+            console.error(ex);
+            res.status(400).send('Não foi possível incluir a requisicao ' +
+                'no banco de dados.');
+        });
+    
+        
 });
 
 router.get("/", function (req, res) {

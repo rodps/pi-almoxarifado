@@ -11,6 +11,7 @@ module.exports = function(sequelize , DataTypes){
         numero: {
             type:DataTypes.INTEGER,
             primaryKey: true,
+            autoIncrement: true
          },
         data: {
             type : DataTypes.DATE,
