@@ -33,12 +33,29 @@ tabela.addEventListener("click", function(event){
 
 
 var btdCarregar = document.querySelector("#newRequisicao");
+
+    
     btdCarregar.addEventListener("click",function(){
-        console.log("fumegano")
-        //var ajax = new XMLHttpRequest()
-        //ajax.open("POST", "localhost:3000/")
-        //ajax.setRequestHeader("Content-type", listRequisicao)
-        //ajax.send()
+        var json = JSON.stringify(listRequisicao);
+        console.log(json)
+        
+        var ajax = new XMLHttpRequest()
+        ajax.open("POST", "url", true)
+        ajax.setRequestHeader('Content-type','application/json; charset=utf-8');
+        
+        //erro
+        ajax.onload = function () {
+            var users = JSON.parse(ajax.responseText);
+            if (ajax.readyState == 4 && ajax.status == "201") {
+                console.table(users);
+            } else {
+                console.error(users);
+            }
+        }
+    //console.log("fumegano")
+    ajax.send({
+        "solicitacoes": json
+    })
 })
 
 
