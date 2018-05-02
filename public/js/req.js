@@ -36,26 +36,13 @@ var btdCarregar = document.querySelector("#newRequisicao");
 
     
     btdCarregar.addEventListener("click",function(){
-        var json = JSON.stringify(listRequisicao);
+        var json = JSON.stringify({"solicitacoes" : listRequisicao});
         console.log(json)
         
         var ajax = new XMLHttpRequest()
-        ajax.open("POST", "url", true)
+        ajax.open("POST", "http://localhost:3000/requisicoes/criar/requisicoes", true)
         ajax.setRequestHeader('Content-type','application/json; charset=utf-8');
-        
-        //erro
-        ajax.onload = function () {
-            var users = JSON.parse(ajax.responseText);
-            if (ajax.readyState == 4 && ajax.status == "201") {
-                console.table(users);
-            } else {
-                console.error(users);
-            }
-        }
-    //console.log("fumegano")
-    ajax.send({
-        "solicitacoes": json
-    })
+         ajax.send(json)
 })
 
 
