@@ -32,9 +32,11 @@ tabela.addEventListener("click", function(event){
 
 var btdCarregar = document.querySelector("#carregar-pacientes");
     btdCarregar.addEventListener("click",function(){
-    
-
         
+        var ajax = new XMLHttpRequest()
+        ajax.open("POST", "localhost:3000/")
+        ajax.setRequestHeader("Content-type", listRequisicao)
+        ajax.send()
 })
 
 
