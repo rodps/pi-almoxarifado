@@ -14,12 +14,9 @@ xhr.addEventListener("load", function(){
 
 xhr.send();
 
-
 var tabela = document.querySelector("table");
-
 tabela.addEventListener("click", function(event){  
     idSolicitacao = event.target.parentNode.lastChild.textContent
-
     if(!listRequisicao.includes(idSolicitacao)){
         listRequisicao.push(idSolicitacao)    
     }
@@ -27,20 +24,22 @@ tabela.addEventListener("click", function(event){
         listRequisicao.pop(idSolicitacao)    
     }
     console.log(listRequisicao)
-    
     //setTimeout(function(){
     //    event.target.parentNode.remove(); //pega campo do duplo click e elimina o pai , fazendo assim apagar a linha
     //},300);
-    
 });
 
 
+var btdCarregar = document.querySelector("#carregar-pacientes");
+    btdCarregar.addEventListener("click",function(){
+    
 
+        
+})
 
 
 
 ///////////////////////////
-
 function addSolicitacaoNaTabela(solicitacao){
     var solicitacaoTr = montaTr(solicitacao);
     var tabela = document.querySelector("#tabela-solicitacao");
