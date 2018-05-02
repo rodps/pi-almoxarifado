@@ -32,14 +32,7 @@ label{
 .info-id{
 	visibility: hidden;
 }
-button:active{
-	margin-top:0px;
-	border: 0;
-}
-button[disabled=disabled], button:disabled {
-    background-color: gray;
-	border-color: darkgray;
-}
+
 button{
 	margin-top: 5%;
 	margin-bottom: 0.5%;
@@ -55,4 +48,13 @@ button{
 	width: 12%;
     display: block;
     clear: both;
+}
+button:active{
+	margin-top:5%;
+	border: 0;
+}
+button[disabled=disabled], button:disabled {
+    background-color: gray;
+	border-color: darkgray;
+	
 }

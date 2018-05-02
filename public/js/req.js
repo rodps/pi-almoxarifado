@@ -32,13 +32,13 @@ tabela.addEventListener("click", function(event){
 });
 
 
-var btdCarregar = document.querySelector("#carregar-pacientes");
+var btdCarregar = document.querySelector("#newRequisicao");
     btdCarregar.addEventListener("click",function(){
-        
-        var ajax = new XMLHttpRequest()
-        ajax.open("POST", "localhost:3000/")
-        ajax.setRequestHeader("Content-type", listRequisicao)
-        ajax.send()
+        console.log("fumegano")
+        //var ajax = new XMLHttpRequest()
+        //ajax.open("POST", "localhost:3000/")
+        //ajax.setRequestHeader("Content-type", listRequisicao)
+        //ajax.send()
 })
 
 
