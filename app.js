@@ -28,19 +28,21 @@ passport.deserializeUser(passportStrategies.deserialize);
 //rotas
 app.use("/", loginRouter);
 app.use("/requisicoes", requisicoesRouter);
-
+/*
 //Cria o banco de dados
 //{force:true} Drop tables se ja existirem
 models.sequelize.sync().then(() => {
-	console.log('Nice! Database looks fine')
+	
+}).catch(function(err) {
+    console.log(err, "Algo deu errado com a database!")
+});
+*/
+console.log('Nice! Database looks fine')
 	app.listen(3000, function(err) {
 		if (!err)
 			console.log("The server has started!");
 		else console.log(err);
 	});
-}).catch(function(err) {
-    console.log(err, "Algo deu errado com a database!")
-});
 
 app.get("/", middleware.isLoggedIn, function(req, res) {
 	res.render("index");

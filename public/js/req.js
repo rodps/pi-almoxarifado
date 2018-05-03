@@ -5,7 +5,7 @@ var idSolicitacao
 var solicitacaoTr = document.createElement("tr");
 var xhr = new XMLHttpRequest();
 
-xhr.open("GET", "http://localhost:3000/requisicoes/listar/solicitacoes"); //tipo de requisição + end.
+xhr.open("GET", "https://raw.githubusercontent.com/LuizASSilveira/pi-almoxarifado/master/teste.json"); //tipo de requisição + end.
 
 xhr.addEventListener("load", function(){
     var sol = JSON.parse(xhr.responseText);
@@ -18,12 +18,17 @@ xhr.send();
 
 var tabela = document.querySelector("table");
 tabela.addEventListener("click", function(event){  
-    idSolicitacao = event.target.parentNode.lastChild.textContent
+    
+    let row = event.target.parentNode
+    idSolicitacao = row.lastChild.textContent
+
     if(!listRequisicao.includes(idSolicitacao)){
-        listRequisicao.push(idSolicitacao)    
+        listRequisicao.push(idSolicitacao)
+        row.classList.add("solicitacaoSelecionada")    
     }
     else{
-        listRequisicao.pop(idSolicitacao)    
+        listRequisicao.pop(idSolicitacao)
+        row.classList.remove("solicitacaoSelecionada")    
     }
     console.log(listRequisicao)
     //setTimeout(function(){
