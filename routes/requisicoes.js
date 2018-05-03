@@ -63,7 +63,7 @@ router.post("/criar/requisicoes", function (req, res) {
             });
             models.solicitacao_requisicao.bulkCreate(lista).then(() => {
                  res.status(201).send("Requisicão Criada");
-               
+                 
             }).catch( ex => {
                  res.status(400).send('Não foi possível associar a solicitação com a requisicão ' +
                 'no banco de dados.');

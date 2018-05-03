@@ -43,6 +43,7 @@ var btdCarregar = document.querySelector("#newRequisicao");
         ajax.open("POST", "http://localhost:3000/requisicoes/criar/requisicoes", true)
         ajax.setRequestHeader('Content-type','application/json; charset=utf-8');
          ajax.send(json)
+
 })
 
 
