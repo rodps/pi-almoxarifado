@@ -4,10 +4,13 @@ var models = require("../models");
 const isLoggedIn = require("../middleware/index").isLoggedIn;
 
 router.get("/", isLoggedIn, (req, res) => {
-  models.solicitacoes.findAll().then(allSolicitacoes => {
-    res.render("solicitacoes/index", { _solicitacoes: allSolicitacoes });
-  });
+ res.render("solicitacoes/index");
 });
+
+router.get("/criar", isLoggedIn, (req, res) => {
+ res.render("solicitacoes/index");
+});
+
 
 router.get("/listar",isLoggedIn, function (req, res) {
     req.isAuthenticated();
@@ -21,7 +24,7 @@ router.get("/listar",isLoggedIn, function (req, res) {
 });
 
 router.get("/adicionar", isLoggedIn, (req, res) => {
-  res.render("solicitacoes/adicionar");
+  res.render("produtos/adicionar");
 });
 
 router.post("/adicionar", isLoggedIn, (req, res) => {

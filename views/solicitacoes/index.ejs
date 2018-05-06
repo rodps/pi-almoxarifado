@@ -10,14 +10,17 @@
         <table class="table table-striped">
           <thead>
               <tr>
-                  <th scope="col">Produto </th>
-                  <th scope="col">Descricao</th>
-                  <th scope="col">Quantidade</th>
-                  <th scope="col">Status</th>
+                  <th scope="col" id = "descricao">Descricao</th>
+                  <th scope="col" id = "qnt">Quantidade</th>
+                  <th scope="col" id = "status" >Status</th>
               </tr>
           </thead>
+            <tbody id="tabela-solicitacao">
+            </tbody>
         </table>
+          <script src="/js/minhasSolicitacoes.js"></script>
       </div>
+    
       <% include ../../views/partials/scripts %>
   </body>
 
