@@ -2,7 +2,7 @@ var solicitacaoTr = document.createElement("tr");
 
 
 var xhr = new XMLHttpRequest();
-xhr.open("GET", "http://localhost:3000/solicitacao"); //tipo de requisição + end.
+xhr.open("GET", "http://localhost:3000/solicitacoes"); //tipo de requisição + end.
 xhr.addEventListener("load", function(){
 
     var solicitacao = JSON.parse(xhr.responseText);
@@ -25,7 +25,7 @@ function montaTr(solicitacao){
     solicitacaoTr.classList.add("solicitacao");
  
     solicitacaoTr.appendChild(montaTd(solicitacao.descricao, "info-descricao"));
-    solicitacaoTr.appendChild(montaTd(solicitacao.quantidade,    "info-data"));
+    solicitacaoTr.appendChild(montaTd(solicitacao.quantidade,    "info-quantidade"));
     solicitacaoTr.appendChild(montaTd(solicitacao.justificativa,  "info-justificativa"));
 
     return solicitacaoTr;
