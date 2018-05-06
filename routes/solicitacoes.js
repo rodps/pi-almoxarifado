@@ -9,6 +9,17 @@ router.get("/", isLoggedIn, (req, res) => {
   });
 });
 
+router.get("/listar",isLoggedIn, function (req, res) {
+    req.isAuthenticated();
+    const id = req.user.id;
+  
+    models.solicitacoes.findAll({
+      where : {usuario_id : id}
+    }).then (solicitacao =>{
+      res.send(solicitacao)
+    });
+});
+
 router.get("/adicionar", isLoggedIn, (req, res) => {
   res.render("solicitacoes/adicionar");
 });
