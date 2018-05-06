@@ -9,28 +9,13 @@
 
         <table class="table table-striped">
           <thead>
-            <tr>
-              <th>Produto</th>
-              <th>Quantidade</th>
-              <th>Justificativa</th>
-            </tr>
-          </thead>
-          <tbody>
-            <% _solicitacoes.forEach((solicitacao) => { %>
               <tr>
-                <td>
-                  <%= solicitacao.produto.descricao %>
-                </td>
-                <td>
-                  <%= solicitacao.quantidade_produto %>
-                </td>
-                <td>
-                  <%= solicitacao.justificativa %>
-                </td>
+                  <th scope="col">Produto </th>
+                  <th scope="col">Descricao</th>
+                  <th scope="col">Quantidade</th>
+                  <th scope="col">Status</th>
               </tr>
-              <% }); %>
-
-          </tbody>
+          </thead>
         </table>
       </div>
       <% include ../../views/partials/scripts %>
