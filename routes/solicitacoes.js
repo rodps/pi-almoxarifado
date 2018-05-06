@@ -8,7 +8,7 @@ router.get("/", isLoggedIn, (req, res) => {
 });
 
 router.get("/criar", isLoggedIn, (req, res) => {
- res.render("solicitacoes/index");
+ res.render("produtos/adicionar");
 });
 
 
