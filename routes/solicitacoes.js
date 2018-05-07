@@ -7,8 +7,8 @@ router.get("/", isLoggedIn, (req, res) => {
  res.render("solicitacoes/index");
 });
 
-router.get("/criar", isLoggedIn, (req, res) => {
- res.render("produtos/adicionar");
+router.get("/adicionar", isLoggedIn, (req, res) => {
+ res.render("solicitacoes/adicionar");
 });
 
 
@@ -23,18 +23,20 @@ router.get("/listar",isLoggedIn, function (req, res) {
     });
 });
 
-router.get("/adicionar", isLoggedIn, (req, res) => {
-  res.render("produtos/adicionar");
-});
+//router.get("/adicionar", isLoggedIn, (req, res) => {
+//  res.render("produtos/adicionar");
+//});
 
 router.post("/adicionar", isLoggedIn, (req, res) => {
   const solicitacao = {
+    descricao: req.body.descricao,
+    status: "ABERTO",
     justificativa: req.body.justificativa,
-    quantidade_produto: req.body.quantidade_produto,
-    user_id: req.body.user.id,
-    produtos: req.body.produtos,
-    orcamentos: req.body.orcamentos
+    quantidade: req.body.quantidade,
+    usuario_id: req.user.id
   };
-  models.solicitacoes.create(solicitacao);
+  models.solicitacoes.create(solicitacao).then( (a)=>{
+    res.redirect("/solicitacoes");
+  });
 });
 module.exports = router;
