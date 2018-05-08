@@ -1,6 +1,6 @@
 <html>
 <% include ../../views/partials/header %>
-
+  
   <body>
     <% include ../../views/partials/nav-bar %>
       <div class="container" style="margin: 0 auto; width:40%;">
@@ -8,43 +8,17 @@
         <form action="/solicitacoes/adicionar" method="post">
           <div class="form-group ">
             <label>Descrição</label>
-            <input type="text " class="form-control" name="descricao">
+            <textarea name="descricao" class="form-control" required ></textarea>
+            <span class="aviso"></span>
           </div>
           <div class="form-group ">
             <label>Quantidade</label>
-            <input type="text " class="form-control " name="quantidade">
+            <input type="number" class="form-control " name="quantidade">
           </div>
           <div class="form-group ">
             <label>Justificativa</label>
-            <input type="text " class="form-control " name="justificativa">
-          </div>
-          <div class="form-group ">
-            <label>Valor de Referência</label>
-            <input type="text " class="form-control " name="status">
-          </div>
-          <div class="form-group ">
-            <label>Pregão</label>
-            <input type="text " class="form-control " name="pregao">
-          </div>
-          <div class="form-group ">
-            <label>Internet</label>
-            <input type="text " class="form-control " name="internet">
-          </div>
-          <div class="form-group ">
-            <label>Oficio ou Email</label>
-            <input type="text " class="form-control " name="oficio_email">
-          </div>
-          <div class="form-group ">
-            <label>Orçamento 1</label>
-            <input type="text " class="form-control " name="orcamento1">
-          </div>
-          <div class="form-group ">
-            <label>Orçamento 2</label>
-            <input type="text " class="form-control " name="orcamento2">
-          </div>
-          <div class="form-group ">
-            <label>Orçamento 3</label>
-            <input type="text " class="form-control " name="orcamento3">
+            <textarea name="justificativa" class="form-control"></textarea>
+            <span class="aviso"></span>
           </div>
 
           <button type="submit" class="btn btn-success ">Salvar</button>
@@ -52,6 +26,3 @@
         </form>
       </div>
   </body>
-
-
-</html>

@@ -1,0 +1,15 @@
+textarea:valid + .aviso:after{
+    position: absolute;    
+    content: "OK";
+    color: #199a31;
+    font: bold normal 1em sans-serif;
+    left: 190px;
+}
+
+input:invalid + .aviso:after{
+    position: absolute;
+    content: "!";
+    color: #f00;
+    font: bold normal 1em sans-serif;
+    left: 190px;
+}
