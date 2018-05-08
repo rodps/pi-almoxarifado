@@ -4,8 +4,8 @@ var ajax = new XMLHttpRequest();
 var idRequisicao = window.location.pathname
 var pos = idRequisicao.split("/")
 
-
 ajax.open("GET", "http://localhost:3000/requisicoes/listar/solicitacoes/" + pos[3]); //tipo de requisição + end.
+//ajax.open("GET", "https://raw.githubusercontent.com/LuizASSilveira/pi-almoxarifado/master/teste.json"); //tipo de requisição + end.
 ajax.addEventListener("load", function(){
     var sol = JSON.parse(ajax.responseText);
     addLabel(sol)
@@ -36,7 +36,7 @@ function addLabel(sol){
     let nomeLb = document.getElementById("solicitanteSolicitacao").value = sol.usuario.nome
     document.getElementById("solicitanteSolicitacao").readOnly = true
 
-    let statusLb = document.getElementById("statusSolicitacaol").value = sol.usuario.status
+    let statusLb = document.getElementById("statusSolicitacaol").value = sol.status
     console.log(statusLb)
     document.getElementById("statusSolicitacaol").readOnly = true
 
