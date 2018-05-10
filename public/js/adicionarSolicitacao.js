@@ -14,13 +14,31 @@ function add_orcamento() {
 
 	var label = document.createElement("label");
 	label.innerHTML = "Orçamento " + qtd;
+	div.appendChild(label);
+
 	var input = document.createElement("input");
 	input.name = "orcamento_"+qtd;
-	input.type = "number"
 	input.classList.add("form-control");
-
-	div.appendChild(label);
+	input.type = "number"
 	div.appendChild(input);
+	
+	var input_cnpj = document.createElement("input");
+	input_cnpj.name = "cnpj";
+	input_cnpj.classList.add("form-control");
+	div.appendChild(input_cnpj);
+
+	var input_nome_fornecedor = document.createElement("input");
+	input_nome_fornecedor.name = "nome_fornecedor";
+	input_nome_fornecedor.classList.add("form-control");
+	div.appendChild(input_nome_fornecedor);
+
+	var input_url = document.createElement("input");
+	input_url.name = "link";
+	input_url.type = "url";
+	input_url.placeholder = "http::www.teste.com";
+	input_url.classList.add("form-control");
+	div.appendChild(input_url);
+
 
 	form.appendChild(div);
 }
