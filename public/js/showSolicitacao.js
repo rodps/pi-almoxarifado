@@ -8,9 +8,6 @@ var pos = idRequisicao.split("/")
 ajax.open("GET", "http://localhost:3000/requisicoes/listar/solicitacoes/" + pos[3]); //tipo de requisição + end.
 //ajax.open("GET", "https://raw.githubusercontent.com/LuizASSilveira/pi-almoxarifado/master/teste.json"); //tipo de requisição + end.
 
-
-
-
 ajax.addEventListener("load", function(){
     var sol = JSON.parse(ajax.responseText);
     addLabel(sol)
@@ -34,7 +31,6 @@ tabela.addEventListener("click", function(event){
     document.getElementById("solicitanteSolicitacao").readOnly = false
     document.getElementById("statusSolicitacaol").readOnly = false    
 });
-
 
 ////////
 
