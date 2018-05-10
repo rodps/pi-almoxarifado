@@ -82,7 +82,7 @@ h3{
 	margin-bottom: 5%;
 }
 
-.info-close{
+.info-close, .info-edit{
 	display: block;
 	margin: auto;
 	color: white;
@@ -133,7 +133,6 @@ p{
 #error{
 	margin-top: -5%; 
 	margin-bottom: 5%;
-	font-family: "Arial Black", Gadget, sans-serif;
 	color: aliceblue;
 }
 
@@ -143,4 +142,7 @@ p{
 }
 #saveSol{
 	font-size: 0.9em;
+}
+tr{
+	cursor: pointer;
 }

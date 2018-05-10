@@ -4,8 +4,8 @@ var ajax = new XMLHttpRequest();
 var idRequisicao = window.location.pathname
 var pos = idRequisicao.split("/")
 
-ajax.open("GET", "http://localhost:3000/requisicoes/listar/solicitacoes/" + pos[3]); //tipo de requisição + end.
-//ajax.open("GET", "https://raw.githubusercontent.com/LuizASSilveira/pi-almoxarifado/master/teste.json"); //tipo de requisição + end.
+//ajax.open("GET", "http://localhost:3000/requisicoes/listar/solicitacoes/" + pos[3]); //tipo de requisição + end.
+ajax.open("GET", "https://raw.githubusercontent.com/LuizASSilveira/pi-almoxarifado/master/teste.json"); //tipo de requisição + end.
 ajax.addEventListener("load", function(){
     var sol = JSON.parse(ajax.responseText);
     addLabel(sol)
@@ -22,6 +22,17 @@ xhr.addEventListener("load", function(){
 })
 xhr.send();
 
+var tabela = document.querySelector("#editar");
+tabela.addEventListener("click", function(event){  
+    document.getElementById("descricaoSolicitacao").readOnly = false 
+    document.getElementById("justificativaSolicitacao").readOnly = false
+    document.getElementById("solicitanteSolicitacao").readOnly = false
+    document.getElementById("statusSolicitacaol").readOnly = false    
+});
+
+
+////////
+
 function addLabel(sol){
     
     let qtdLb = document.getElementById("quantidadeSolicitacao").value = sol.quantidade
@@ -37,11 +48,9 @@ function addLabel(sol){
     document.getElementById("solicitanteSolicitacao").readOnly = true
 
     let statusLb = document.getElementById("statusSolicitacaol").value = sol.status
-    console.log(statusLb)
     document.getElementById("statusSolicitacaol").readOnly = true
 
 }
-
 
 function addSolicitacaoNaTabela(solicitacao){
     var solicitacaoTr = montaTr(solicitacao);
@@ -56,7 +65,7 @@ function montaTr(solicitacao){
     solicitacaoTr.appendChild(montaTd(solicitacao.valor,                    "info-valor"       ));
     solicitacaoTr.appendChild(montaTd(solicitacao.origem,                   "info-origem"      ));
     solicitacaoTr.appendChild(montaTd(solicitacao.cnpj_forncedor,           "cnpj_forncedor"      ));
-    solicitacaoTr.appendChild(montaTd(solicitacao.nome_fornecedor,  "info-nome_fornecedor" ));
+    solicitacaoTr.appendChild(montaTd(solicitacao.nome_fornecedor,          "info-nome_fornecedor" ));
     
     solicitacaoTr.appendChild(montaTd(solicitacao.id,                       "info-id"           ));
 
