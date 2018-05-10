@@ -65,8 +65,12 @@ function addSolicitacaoNaTabela(solicitacao){
 function montaTr(solicitacao){
     var solicitacaoTr = document.createElement("tr");
     solicitacaoTr.classList.add("solicitacao");
- 
-    solicitacaoTr.appendChild(montaTd(solicitacao.data,                     "info-data"         ));
+    
+    let date = solicitacao.data.split("T");
+    
+    
+
+    solicitacaoTr.appendChild(montaTd(date[0],                     "info-data"         ));
     solicitacaoTr.appendChild(montaTd(solicitacao.solicitaco.descricao,     "info-descricao"    ));
     solicitacaoTr.appendChild(montaTd(solicitacao.solicitaco.status,        "info-status"       ));
 

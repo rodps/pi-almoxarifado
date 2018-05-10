@@ -104,7 +104,7 @@ h3{
 
 #criarReq{
 	margin-left: 19.5%;
-	margin-bottom: -3.3%
+	margin-bottom: 0;
 }
 #listarReq{
 	margin-left: 20%;
@@ -132,7 +132,7 @@ p{
 
 #error{
 	margin-top: -5%; 
-	margin-bottom: 5%;
+	margin-bottom: 2%;
 	color: aliceblue;
 }
 
@@ -145,4 +145,8 @@ p{
 }
 tr{
 	cursor: pointer;
+}
+
+#newRequisicao{
+	margin-left: 68.4%; 
 }

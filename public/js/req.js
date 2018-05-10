@@ -25,8 +25,6 @@ tabelaShow.addEventListener("dblclick", function(event){
     window.location.href = "http://localhost:3000/solicitacoes/show/" + idSolicitacao
 });
 
-
-
 var tabela = document.querySelector("#tabela-solicitacao");
 tabela.addEventListener("click", function(event){  
     row = event.target.parentNode
@@ -50,6 +48,15 @@ tabela.addEventListener("click", function(event){
     //    event.target.parentNode.remove(); //pega campo do duplo click e elimina o pai , fazendo assim apagar a linha
     //},300);
 });
+btdModal = document.querySelector("#newRequisicao");
+    btdModal.addEventListener("click",function(){
+        if(listRequisicao.length != 0){
+             $("#exampleModal").modal();
+        }
+        else{
+            document.getElementById("error").style.display = "block";
+        }
+})
 
 btdCarregar = document.querySelector("#saveRequisicao");
     btdCarregar.addEventListener("click",function(){
@@ -60,15 +67,8 @@ btdCarregar = document.querySelector("#saveRequisicao");
             ajax.send(json)
             window.location.reload()
 })
-btdModal = document.querySelector("#saveReq");
-    btdModal.addEventListener("click",function(){
-        if(listRequisicao.length != 0){
-        $("#exampleModal").modal();
-        }
-        else{
-            document.getElementById("error").style.display = "block";
-        }
-})
+
+
 
 ///////////////////////////
 function addSolicitacaoNaTabela(solicitacao){

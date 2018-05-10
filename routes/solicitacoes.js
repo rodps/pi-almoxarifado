@@ -3,20 +3,20 @@ var router = express.Router();
 var models = require("../models");
 const isLoggedIn = require("../middleware/index").isLoggedIn;
 
-router.get("/", isLoggedIn, (req, res) => {
+router.get("/", (req, res) => {
   models.solicitacoes.findAll().then(allSolicitacoes => {
     res.render("solicitacoes/index", { _solicitacoes: allSolicitacoes });
   });
 });
 
-router.get("/adicionar", isLoggedIn, (req, res) => {
+router.get("/adicionar", (req, res) => {
   res.render("solicitacoes/adicionar");
 });
 router.get("/show/:id", (req, res) => {
   res.render("solicitacoes/show");
 });
 
-router.post("/adicionar", isLoggedIn, (req, res) => {
+router.post("/adicionar", (req, res) => {
   const solicitacao = {
     justificativa: req.body.justificativa,
     quantidade_produto: req.body.quantidade_produto,

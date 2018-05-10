@@ -8,7 +8,7 @@ const isLoggedInAdm = require("../middleware/index").isLoggedInAdm;
 
 //---------------------------------------------LISTAR SOLICITACOES --------------------------------------------
 
-router.get("/listar/solicitacoes", isLoggedInAdm, function (req, res) {
+router.get("/listar/solicitacoes", function (req, res) {
 
     models.solicitacoes.findAll({
         include: [{
@@ -25,7 +25,7 @@ router.get("/listar/solicitacoes", isLoggedInAdm, function (req, res) {
 
 });
 
-router.get("/listar/solicitacoes/:id", isLoggedInAdm, function (req, res) {
+router.get("/listar/solicitacoes/:id", function (req, res) {
     const id = req.params.id;
 
     models.solicitacoes.findAll({
@@ -55,7 +55,7 @@ router.get("/listar/solicitacoes/:id", isLoggedInAdm, function (req, res) {
 
 
 
-router.post("/criar/requisicoes", isLoggedInAdm, function (req, res) {
+router.post("/criar/requisicoes", function (req, res) {
     req.isAuthenticated();
     usuario_id = req.user.id;
 
@@ -94,7 +94,7 @@ router.post("/criar/requisicoes", isLoggedInAdm, function (req, res) {
         })
 });
 
-router.get("/", isLoggedInAdm, function (req, res) {
+router.get("/", function (req, res) {
     res.render("requisicoes/requisicao");
 });
 
@@ -118,7 +118,7 @@ router.get("/listar", function (req, res) {
 });
 
 
-router.get("/listar/requisicoes_solicitacoes", isLoggedInAdm, function (req, res) {
+router.get("/listar/requisicoes_solicitacoes", function (req, res) {
     models.solicitacao_requisicao.findAll({
         include: [{
             model: models.solicitacoes,
