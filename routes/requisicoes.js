@@ -6,7 +6,7 @@ const Op = Sequelize.Op;
 const isLoggedInAdm = require("../middleware/index").isLoggedInAdm;
 
 
-
+//---------------------------------------------LISTAR SOLICITACOES --------------------------------------------
 
 router.get("/listar/solicitacoes", isLoggedInAdm, function (req, res) {
 
@@ -28,7 +28,14 @@ router.get("/listar/solicitacoes", isLoggedInAdm, function (req, res) {
 router.get("/listar/solicitacoes/:id", isLoggedInAdm, function (req, res) {
     const id = req.params.id;
 
-    models.solicitacoes.findById(id).then(solicitacao => {
+    models.solicitacoes.findAll({
+         include: [{
+            model: models.usuarios,
+            where: { id: Sequelize.col('usuario_id') },
+            attributes: ['nome'],
+        }], where : {id : id}
+
+    }).then(solicitacao => {
         if (solicitacao) {
             res.status(200).json(solicitacao);
         } else {
@@ -39,6 +46,8 @@ router.get("/listar/solicitacoes/:id", isLoggedInAdm, function (req, res) {
         res.status(400).send('Não foi possível consultar a solicitacao.');
     })
     //res.send(solicitacao);
+
+    
 });
 
 
