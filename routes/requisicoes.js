@@ -107,7 +107,7 @@ router.get("/listar", function (req, res) {
             model: models.usuarios,
             where: { id: Sequelize.col('usuario_id') },
             attributes: ['nome'],
-        }]
+        }], where : {status : 'VALIDA'}
     }).then(requisicoes => {
 
         res.send(requisicoes);
