@@ -24,7 +24,7 @@ function add_orcamento() {
 	div.appendChild(label2);
 
 	var input = document.createElement("input");
-	input.name = "orcamento_"+qtd;
+	input.name = "valor";
 	input.classList.add("form-control");
 	input.type = "number"
 	div.appendChild(input);
@@ -35,7 +35,7 @@ function add_orcamento() {
 
 
 	var input_cnpj = document.createElement("input");
-	input_cnpj.name = "cnpj";
+	input_cnpj.name = "cnpj_forncedor";
 	input_cnpj.classList.add("form-control");
 	div.appendChild(input_cnpj);
 
@@ -48,27 +48,27 @@ function add_orcamento() {
 	input_nome_fornecedor.classList.add("form-control");
 	div.appendChild(input_nome_fornecedor);
 
-	var label2 = document.createElement("label");
-	label2.innerHTML = "Link do Pregão";
-	div.appendChild(label2);
+	// var label2 = document.createElement("label");
+	// label2.innerHTML = "Link do Pregão";
+	// div.appendChild(label2);
 
-	var input_url = document.createElement("input");
-	input_url.name = "link";
-	input_url.type = "url";
-	input_url.placeholder = "https://www.moodle.utfpr.edu.br";
-	input_url.classList.add("form-control");
-	div.appendChild(input_url);
+	// var input_url = document.createElement("input");
+	// input_url.name = "link";
+	// input_url.type = "url";
+	// input_url.placeholder = "https://www.moodle.utfpr.edu.br";
+	// input_url.classList.add("form-control");
+	// div.appendChild(input_url);
 
-	var label2 = document.createElement("label");
-	label2.innerHTML = "Upload PDF";
-	div.appendChild(label2);
+	// var label2 = document.createElement("label");
+	// label2.innerHTML = "Upload PDF";
+	// div.appendChild(label2);
 
 
-	var input_arquivo = document.createElement("input");
-	input_arquivo.name = "arquivo";
-	input_arquivo.type = "file";
-	input_arquivo.classList.add("form-control");
-	div.appendChild(input_arquivo);
+	// var input_arquivo = document.createElement("input");
+	// input_arquivo.name = "arquivo";
+	// input_arquivo.type = "file";
+	// input_arquivo.classList.add("form-control");
+	// div.appendChild(input_arquivo);
 
 
 	form.appendChild(div);

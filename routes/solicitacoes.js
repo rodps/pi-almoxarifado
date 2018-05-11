@@ -35,8 +35,50 @@ router.post("/adicionar", isLoggedIn, (req, res) => {
     quantidade: req.body.quantidade,
     usuario_id: req.user.id
   };
-  models.solicitacoes.create(solicitacao).then( (a)=>{
-    res.redirect("/solicitacoes");
+
+ 
+
+  models.solicitacoes.create(solicitacao).then( (_solicitacao)=>{
+      console.log("solicitacao ", _solicitacao.id, " adicionada")
+       
+       let list= [];
+       let valor= req.body.valor
+       if(valor){
+         if(typeof valor === typeof " "){
+            list.push(
+              { 
+                //origem: req.body.url? req.body.url: req.body.arquivo,
+                origem: "nada",
+                valor: req.body.valor,
+                cnpj_forncedor: req.body.cnpj_forncedor,
+                solicitacao_id: _solicitacao.id,
+                nome_fornecedor: req.body.nome_fornecedor
+              }
+              )
+         }
+         else{
+          let i=0
+            while(i<valor.length){
+              list.push(
+              { 
+                //origem: req.body.url[i]? req.body.url[i]: req.body.arquivo[i],
+                origem: "nada",
+                valor: req.body.valor[i],
+                cnpj_forncedor: req.body.cnpj_forncedor[i],
+                solicitacao_id: _solicitacao.id,
+                nome_fornecedor: req.body.nome_fornecedor[i]
+              }
+              )
+            i=i+1;
+           }
+         }
+         
+        models.orcamentos.bulkCreate(list).then( (_orcamento)=>{
+          console.log("adicionado orcamento ", _orcamento, "a solicitacao");
+        });
+      }
+      res.redirect("/solicitacoes");
   });
+ 
 });
 module.exports = router;
