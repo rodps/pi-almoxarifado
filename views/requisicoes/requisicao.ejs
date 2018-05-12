@@ -12,13 +12,13 @@
 	
 	<% include ../../views/partialsAdm/navAdm %>
 	<% include ../../views/requisicoes/modal %>	
+	
 	<div id= "error" style = "display:none;background-color: rgb(247, 162, 162);" class="alert alert-secondary" role="alert">
-		Nenhuma solicitacao selecionada
+		Nenhuma solicitação selecionada.
+
 	</div>
 	<p id ="criarReq" >Criar Requisicao</p>
 
-	<button type="button" id="saveReq"  data-toggle="modal" id="newRequisicao" class="botao bto-principal" >Nova Requisição</button>
-	
 	<div class="container">
 		<table class="table">
 			<thead>
@@ -32,11 +32,10 @@
             <tbody id="tabela-solicitacao">
             </tbody>        
         </table>
-		<script src="/js/req.js"></script>
-	</div>
 		
-	
-
+	</div>
+	<button type="button" data-toggle="modal" id="newRequisicao" class="botao bto-principal" >Criar Requisição</button>	
+	<script src="/js/req.js"></script>
 	<!-- Bootstrap JSs -->
 	<script src="/js/bootstrap.min.js"></script>
 	<!-- FontAwesome JS -->
