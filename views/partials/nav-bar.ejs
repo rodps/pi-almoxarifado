@@ -1,58 +1,31 @@
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <div class="navbar-header">
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">Warehouse
+    <span>
+      <i class="fas fa-warehouse"></i>
+    </span>
+  </a>
 
-      <a class="navbar-brand" href="/">Warehouse
-        <span>
-          <i class="fas fa-warehouse"></i>
-        </span>
-      </a>
-    </div>
-    <div id="navbar" class="navbar-collapse collapse">
-      <ul class="nav navbar-nav">
-        <li>
-          <a href="/">Home</a>
-        </li>
-        <li>
-          <a href="/solicitacoes">Solicitações</a>
-        </li>
-        <li>
-          <a href="/produtos">Produtos</a>
-        </li>
-        <li>
-          <a href="/requisicoes">Criar Requisicoes</a>
-        </li>
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a class="nav-link" href="/solicitacoes">Minhas Solicitações</a>
+    </li>
+  </ul>
 
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-            <span>
-              <i class="fas fa-user"></i>
-            </span>
-            user
-            <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li>
-              <a href="#" style="text-align: center">Perfil &nbsp;&nbsp;
-                <span>
-                  <i class="fas fa-edit"></i>
-                </span>
-              </a>
-            </li>
-            <li>
-              <a href="/logout" style="text-align: center">Sair &nbsp;&nbsp;
-                <span>
-                  <i class="fas fa-sign-out-alt"></i>
-                </span>
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
-    </div>
-    <!--/.nav-collapse -->
+  <div class="input-group" style="width: 40%">
+    <!-- <div class="input-group-prepend">
+      <button class="btn btn-light" type="submit">
+        <i class="fas fa-search"></i>
+      </button>
+    </div> -->
+
+    <input type="search" class="form-control" placeholder="Procurar Solicitações">
   </div>
-  <!--/.container-fluid -->
+
+  <ul class="navbar-nav ml-auto">
+    <span onload="getUsuario" id="getUsuario" class="navbar-text"></span>
+    <li class="nav-item">
+      <a class="nav-link" href="#">
+        <i class="fas fa-sign-out-alt"></i> Sair</a>
+    </li>
+  </ul>
 </nav>

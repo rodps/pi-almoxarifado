@@ -10,8 +10,7 @@ const express = require("express"),
   solicitacoesRouter = require("./routes/solicitacoes"),
   produtosRouter = require("./routes/produtos"),
   requisicoesRouter = require("./routes/requisicoes");
-  siorgRouter = require("./routes/siorg");
-
+siorgRouter = require("./routes/siorg");
 
 // configuracoes
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -37,11 +36,10 @@ app.use("/produtos", produtosRouter);
 app.use("/requisicoes", requisicoesRouter);
 app.use("/siorg", siorgRouter);
 
-
 //Cria o banco de dados
 //{force:true} Drop tables se ja existirem
 models.sequelize
-  .sync()
+  .sync({ force: true })
   .then(() => {
     console.log("Nice! Database looks fine");
     app.listen(3000, function(err) {
