@@ -1,3 +1,5 @@
+"use strict";
+
 const express = require("express"),
   bodyParser = require("body-parser"),
   passport = require("passport"),
@@ -9,8 +11,8 @@ const express = require("express"),
   loginRouter = require("./routes/login"),
   solicitacoesRouter = require("./routes/solicitacoes"),
   produtosRouter = require("./routes/produtos"),
-  requisicoesRouter = require("./routes/requisicoes");
-siorgRouter = require("./routes/siorg");
+  requisicoesRouter = require("./routes/requisicoes"),
+  siorgRouter = require("./routes/siorg");
 const moment = require("moment");
 
 // configuracoes

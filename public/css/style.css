@@ -1,33 +1,33 @@
 h1 {
-	margin: 30px;
+  margin: 30px;
 }
 
 form {
-	margin: 30px;
+  margin: 30px;
 }
 
 form#solicitacao {
-	width: 50%;
-	margin: 0 auto;
+  width: 50%;
+  margin: 0 auto;
 }
 
 form#menu {
-	margin: 10px;
-	width: auto;
+  margin: 10px;
+  width: auto;
 }
 
 .card {
-	margin: 10px 0;
+  margin: 10px 0;
 }
 
 .card span {
-	float: right;
+  float: right;
 }
 
 .card .badge {
-	float: right;
+  float: right;
 }
 
 .tr-clickable:hover {
-	cursor: pointer;
+  cursor: pointer;
 }

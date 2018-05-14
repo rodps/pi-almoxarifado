@@ -57,13 +57,18 @@
 										<td>
 											<%= solicitacao.data %>
 										</td>
-										<th>
-											<%= solicitacao.descricao.substring(0, 80) %>
-										</th>
-										<td>
-											<%= solicitacao.quantidade %>
-										</td>
-										<td>Em Aberto</td>
+
+										<%= solicitacao.descricao.substring(0, 80) %>
+											</th>
+
+											<td>
+												<%= solicitacao.descricao.substring(0, 80) %>
+											</td>
+
+											<td>
+												<%= solicitacao.quantidade %>
+											</td>
+											<td>Em Aberto</td>
 									</tr>
 									<% }) %>
 							</tbody>

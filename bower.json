@@ -1,0 +1,22 @@
+{
+  "name": "warehouseutfpr",
+  "description": "",
+  "main": "app.js",
+  "authors": [
+    "rodrigo"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/rodps/pi-almoxarifado",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "4",
+    "jquery": "^3.3.1"
+  }
+}
