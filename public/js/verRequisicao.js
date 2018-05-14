@@ -47,18 +47,15 @@ function addSolicitacaoNaTabela(solicitacao){
     var botao = document.getElementById("close"+ solicitacao.solicitaco.id)
     botao.addEventListener("click",function(event){
 
-    console.log(event.target.solicitacao)
     let id = event.target.solicitacao
-    console.log(id);
-    
+        
     var json = JSON.stringify(id);
     var ajax = new XMLHttpRequest()
     ajax.open("DELETE", "http://localhost:3000/requisicoes/excluir/solicitacao/"+ id, true)
     ajax.setRequestHeader('Content-type','application/json; charset=utf-8');
     ajax.send()
     window.location.reload()
-    
-})
+    })
 
     return
 }
@@ -67,9 +64,7 @@ function montaTr(solicitacao){
     solicitacaoTr.classList.add("solicitacao");
     
     let date = solicitacao.data.split("T");
-    
-    
-
+ 
     solicitacaoTr.appendChild(montaTd(date[0],                     "info-data"         ));
     solicitacaoTr.appendChild(montaTd(solicitacao.solicitaco.descricao,     "info-descricao"    ));
     solicitacaoTr.appendChild(montaTd(solicitacao.solicitaco.status,        "info-status"       ));
