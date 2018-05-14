@@ -2,51 +2,41 @@
 <html>
 
 <head>
-	<title>Sistema Almoxarifado</title>
+	<title>Adicionar Solicitação</title>
+
 	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/fontawesome-all.min.css">
 	<link rel="stylesheet" type="text/css" href="/css/requisicao.css">
 </head>
 <body>
-		
+	
 	<% include ../../views/partialsAdm/navAdm %>
 	<% include ../../views/requisicoes/modal %>	
-
-	
 	<div id= "error" style = "display:none;background-color: rgb(247, 162, 162);" class="alert alert-secondary" role="alert">
-		Nenhuma solicitação selecionada.
+		Nenhuma solicitacao selecionada
 	</div>
-	
-	<p id ="criarReq" >Criar Requisicao</p>
-	
-	<nav class="navbar navbar-light bg-write" id = "searchNav">
-		<form class = "form-inline">
-			<input class="form-control mr-sm-2" type="search" placeholder="Pesquisar" id="descricao-consulta" aria-label="Search">     
-		</form>
-	</nav>
+
+	<p id ="addSolicitacaoReq">Editar Requisicão</p>
+
 
 	<div class="container">
-		<table class="table table-bordered ">
-			<thead class="table-dark">
+		<table class="table">
+			<thead>
                 <tr>
 			        <th scope="col" style="width:15%" id = "thData">Data</th>
 					<th scope="col" style="width:50%" id = "thDescricao">Descrição</th>
                   	<th scope="col" style="width:15%" id = "thStatus">Status</th>
 					<th scope="col" style="width:20%" id = "thSolicitante">Solicitante</th>
-					<th scope="col" style="width:10%" id = "thEditar">Editar</th>
+					
                 </tr>
             </thead>
             <tbody id="tabela-solicitacao">
             </tbody>        
         </table>
-		
 	</div>
-	<button type="button" data-toggle="modal" id="newRequisicao" class="botao bto-principal" >Criar Requisição</button>	
-	
-	
-	<script src="/js/req.js"></script>
-	<script src="/js/search.js"></script>
-
+		
+	<button type="button" id="saveSol" data-toggle="modal" id="newSolicitacao" class="botao bto-principal" >Adicionar Solicitação</button>
+		<script src="/js/addSolicitacao.js"></script>
 	<!-- Bootstrap JSs -->
 	<script src="/js/bootstrap.min.js"></script>
 	<!-- FontAwesome JS -->

@@ -5,7 +5,7 @@ var solicitacaoTr = document.createElement("tr");
 var xhr = new XMLHttpRequest();
 var btdCarregar;
 var btdModal;
-
+moment.locale("pt-br");
 xhr.open("GET", "http://localhost:3000/requisicoes/listar/solicitacoes"); //tipo de requisição + end.
 //xhr.open("GET", "https://raw.githubusercontent.com/LuizASSilveira/pi-almoxarifado/master/listSolicitacao.json"); //tipo de requisição + end.
 
@@ -77,7 +77,7 @@ function addSolicitacaoNaTabela(solicitacao){
 
     let id = event.target.solicitacao   
     var json = JSON.stringify(id);
-    window.location.href = "http://localhost:3000/solicitacoes/show/" + id
+    window.location.href = "http://localhost:3000/solicitacoes/" + id
     
     })
     return
@@ -86,7 +86,7 @@ function montaTr(solicitacao){
     var solicitacaoTr = document.createElement("tr");
     solicitacaoTr.classList.add("solicitacao");
  
-    solicitacaoTr.appendChild(montaTd(solicitacao.data,         "info-data"         ));
+    solicitacaoTr.appendChild(montaTd(moment(solicitacao.data).calendar(),         "info-data"         ));
     solicitacaoTr.appendChild(montaTd(solicitacao.descricao,    "info-descricao"    ));
     solicitacaoTr.appendChild(montaTd(solicitacao.status,       "info-status"       ));
     solicitacaoTr.appendChild(montaTd(solicitacao.usuario.nome, "info-solicitante"  ));
@@ -113,7 +113,7 @@ function getStatus(event){
 
 function montaButton(id){
     var btn = document.createElement("Button");
-    var lbl = document.createTextNode("Edit");        
+    var lbl = document.createTextNode("Editar");        
     btn.appendChild(lbl); 
    
     btn.classList.add("info-edit")

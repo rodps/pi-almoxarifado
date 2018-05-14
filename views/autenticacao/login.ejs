@@ -4,7 +4,6 @@
 
 <head>
 
-	<% include ../../views/partials/header %>
 		<style type="text/css">
 			.login-form {
 				width: 340px;
@@ -32,11 +31,12 @@
 				font-size: 15px;
 				font-weight: bold;
 			}
-		</style>
+</style>
+<link rel="stylesheet" href="/css/bootstrap.min.css">
 </head>
 
 <body>
-
+	<% include ../partials/nav-bar-autenticacao %>
 	<div class="login-form">
 		<form action="/login" method="POST">
 			<h2 class="text-center">

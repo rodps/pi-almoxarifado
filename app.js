@@ -42,6 +42,11 @@ app.use("/siorg", siorgRouter);
 moment.locale("pt-br");
 app.locals.moment = moment;
 
+app.use(function(req, res, next) {
+  res.locals.user = req.user;
+  next();
+});
+
 //Cria o banco de dados
 //{force:true} Drop tables se ja existirem
 models.sequelize

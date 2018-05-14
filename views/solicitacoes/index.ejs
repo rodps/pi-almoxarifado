@@ -1,5 +1,14 @@
-<% var title = "Nova Solicitação" %>
-	<% include ../partials/header %>
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link rel="stylesheet" type="text/css" href="/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/fontawesome-all.min.css">
+	<link rel="stylesheet" type="text/css" href="/css/style.css">
+</head>
+
+<body>
+	<% include ../partialsAdm/navAdm %>
 
 		<div class="row">
 			<div class="col-md-2">
@@ -55,20 +64,17 @@
 								<% solicitacoes.forEach((solicitacao) => { %>
 									<tr class="tr-clickable" data-href="/solicitacoes/<%= solicitacao.id %>">
 										<td>
-											<%= solicitacao.data %>
+											<%= moment(solicitacao.data).calendar() %>
 										</td>
 
-										<%= solicitacao.descricao.substring(0, 80) %>
-											</th>
+										<td>
+											<%= solicitacao.descricao.substring(0, 80) %>
+										</td>
 
-											<td>
-												<%= solicitacao.descricao.substring(0, 80) %>
-											</td>
-
-											<td>
-												<%= solicitacao.quantidade %>
-											</td>
-											<td>Em Aberto</td>
+										<td>
+											<%= solicitacao.quantidade %>
+										</td>
+										<td><%= solicitacao.status %></td>
 									</tr>
 									<% }) %>
 							</tbody>
