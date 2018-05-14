@@ -6,8 +6,8 @@ var xhr = new XMLHttpRequest();
 var btdCarregar
 var btdModal
 
-//xhr.open("GET", "http://localhost:3000/requisicoes/listar/solicitacoes"); //tipo de requisição + end.
-xhr.open("GET", "https://raw.githubusercontent.com/LuizASSilveira/pi-almoxarifado/master/listSolicitacao.json"); //tipo de requisição + end.
+xhr.open("GET", "http://localhost:3000/requisicoes/listar/solicitacoes"); //tipo de requisição + end.
+//xhr.open("GET", "https://raw.githubusercontent.com/LuizASSilveira/pi-almoxarifado/master/listSolicitacao.json"); //tipo de requisição + end.
 
 xhr.addEventListener("load", function(){
     var sol = JSON.parse(xhr.responseText);
