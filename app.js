@@ -10,8 +10,8 @@ const express = require("express"),
   solicitacoesRouter = require("./routes/solicitacoes"),
   produtosRouter = require("./routes/produtos"),
   requisicoesRouter = require("./routes/requisicoes");
-  siorgRouter = require("./routes/siorg");
-
+siorgRouter = require("./routes/siorg");
+const moment = require("moment");
 
 // configuracoes
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -37,6 +37,8 @@ app.use("/produtos", produtosRouter);
 app.use("/requisicoes", requisicoesRouter);
 app.use("/siorg", siorgRouter);
 
+moment.locale("pt-br");
+app.locals.moment = moment;
 
 //Cria o banco de dados
 //{force:true} Drop tables se ja existirem
@@ -53,6 +55,12 @@ models.sequelize
     console.log(err, "Algo deu errado com a database!");
   });
 
-app.get("/", middleware.isLoggedIn, function(req, res) {
-  res.render("index");
+app.get("/backend/solicitacoes/:id/orcamentos", (req, res) => {
+  models.orcamentos
+    .findAll({
+      where: { solicitacao_id: req.params.id }
+    })
+    .then(orcamentos => {
+      res.send(JSON.stringify(orcamentos));
+    });
 });

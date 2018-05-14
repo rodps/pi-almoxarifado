@@ -3,6 +3,7 @@
 <html lang="en">
 
 <head>
+
 	<% include ../../views/partials/header %>
 		<style type="text/css">
 			.login-form {
@@ -26,6 +27,7 @@
 				min-height: 38px;
 				border-radius: 2px;
 			}
+
 			.btn {
 				font-size: 15px;
 				font-weight: bold;
@@ -34,29 +36,29 @@
 </head>
 
 <body>
-	<% include ../../views/partials/nav-bar-autenticacao %>
-		<div class="login-form">
-			<form action="/login" method="POST">
-				<h2 class="text-center">
-					<i class="fas fa-sign-in-alt"></i>
-				</h2>
-				<div class="form-group">
-					<input type="text" class="form-control" name="nome" placeholder="Nome" required="required">
-				</div>
-				<div class="form-group">
-					<input type="password" class="form-control" name="senha" placeholder="Senha" required="required">
-				</div>
-				<div class="form-group">
-					<button type="submit" class="btn btn-success btn-block">Entrar</button>
-				</div>
-				<br>
-				<p class="text-center">
-					<a class="btn btn-primary" href="/signup">Cadastrar</a>
-				</p>
-			</form>
 
-		</div>
-		<% include ../../views/partials/scripts %>
+	<div class="login-form">
+		<form action="/login" method="POST">
+			<h2 class="text-center">
+				<i class="fas fa-sign-in-alt"></i>
+			</h2>
+			<div class="form-group">
+				<input type="text" class="form-control" name="nome" placeholder="Nome" required="required">
+			</div>
+			<div class="form-group">
+				<input type="password" class="form-control" name="senha" placeholder="Senha" required="required">
+			</div>
+			<div class="form-group">
+				<button type="submit" class="btn btn-success btn-block">Entrar</button>
+			</div>
+			<br>
+			<p class="text-center">
+				<a class="btn btn-primary" href="/signup">Cadastrar</a>
+			</p>
+		</form>
+
+	</div>
+	<% include ../../views/partials/scripts %>
 </body>
 
 </html>
