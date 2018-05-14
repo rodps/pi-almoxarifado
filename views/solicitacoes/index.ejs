@@ -63,11 +63,11 @@
 								<% solicitacoes.forEach((solicitacao) => { %>
 									<tr class="tr-clickable" data-href="/solicitacoes/<%= solicitacao.id %>">
 										<td>
-											<%= moment(solicitacao.data).calendar() %>
+											<%= solicitacao.data %>
 										</td>
-										<th>
+										<td>
 											<%= solicitacao.descricao.substring(0, 80) %>
-										</th>
+										</td>
 										<td>
 											<%= solicitacao.quantidade %>
 										</td>
@@ -81,6 +81,7 @@
 		</div>
 
 		<% include ../partials/scripts %>
+
 </body>
 
 </html>

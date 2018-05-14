@@ -1,3 +1,5 @@
+"use strict";
+
 const express = require("express"),
   bodyParser = require("body-parser"),
   passport = require("passport"),
@@ -9,8 +11,8 @@ const express = require("express"),
   loginRouter = require("./routes/login"),
   solicitacoesRouter = require("./routes/solicitacoes"),
   produtosRouter = require("./routes/produtos"),
-  requisicoesRouter = require("./routes/requisicoes");
-siorgRouter = require("./routes/siorg");
+  requisicoesRouter = require("./routes/requisicoes"),
+  siorgRouter = require("./routes/siorg");
 
 // configuracoes
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -39,7 +41,7 @@ app.use("/siorg", siorgRouter);
 //Cria o banco de dados
 //{force:true} Drop tables se ja existirem
 models.sequelize
-  .sync({ force: true })
+  .sync()
   .then(() => {
     console.log("Nice! Database looks fine");
     app.listen(3000, function(err) {
