@@ -1,20 +1,20 @@
-var listRequisicao = []
-var idSolicitacao
-var statusSolicitacao
+var listRequisicao = [];
+var idSolicitacao;
+var statusSolicitacao;
 var solicitacaoTr = document.createElement("tr");
 var xhr = new XMLHttpRequest();
-var btdCarregar
-var btdModal
+var btdCarregar;
+var btdModal;
 
 xhr.open("GET", "http://localhost:3000/requisicoes/listar/solicitacoes"); //tipo de requisição + end.
 //xhr.open("GET", "https://raw.githubusercontent.com/LuizASSilveira/pi-almoxarifado/master/listSolicitacao.json"); //tipo de requisição + end.
 
-xhr.addEventListener("load", function(){
-    var sol = JSON.parse(xhr.responseText);
-    sol.forEach(function(solicitacao) {
+xhr.addEventListener("load", function() {
+  var sol = JSON.parse(xhr.responseText);
+  sol.forEach(function(solicitacao) {
     addSolicitacaoNaTabela(solicitacao);
-    });
-})
+  });
+});
 xhr.send();
 
 var campoBusca = document.querySelector("#descricao-consulta");
@@ -23,10 +23,10 @@ campoBusca.addEventListener("input", function(){
 })
 
 var tabelaShow = document.querySelector("#tabela-solicitacao");
-tabelaShow.addEventListener("dblclick", function(event){  
-    var row = event.target.parentNode
-    idSolicitacao = row.lastChild.textContent
-    window.location.href = "http://localhost:3000/solicitacoes/show/" + idSolicitacao
+tabelaShow.addEventListener("dblclick", function(event) {
+  var row = event.target.parentNode;
+  idSolicitacao = row.lastChild.textContent;
+  window.location.href = "http://localhost:3000/solicitacoes/" + idSolicitacao;
 });
 
 var tabela = document.querySelector("#tabela-solicitacao");
@@ -44,6 +44,7 @@ tabela.addEventListener("click", function(event){
 });
 
 btdModal = document.querySelector("#newRequisicao");
+
     btdModal.addEventListener("click",function(){
         if(listRequisicao.length != 0){
              $("#exampleModal").modal();
@@ -95,12 +96,14 @@ function montaTr(solicitacao){
     return solicitacaoTr;
  }
 
-function montaTd(dado,classe){
-    var td = document.createElement("td");
-    td.textContent = dado;
-    td.classList.add(classe);
-    return td;
+
+function montaTd(dado, classe) {
+  var td = document.createElement("td");
+  td.textContent = dado;
+  td.classList.add(classe);
+  return td;
 }
+
 function getStatus(event){
     if(event.childNodes[2].textContent == "ABERTO"){
         return true
