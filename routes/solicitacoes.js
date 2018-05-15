@@ -4,7 +4,7 @@ var models = require("../models");
 const isLoggedin = require("../middleware/index").isLoggedIn;
 
 router.get("/", isLoggedin, (req, res) => {
-  models.solicitacoes.findAll().then(solicitacoes => {
+  models.solicitacoes.findAll({where : {id : req.user.id} }).then(solicitacoes => {
     res.render("solicitacoes", { solicitacoes: solicitacoes });
   });
 });

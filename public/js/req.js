@@ -114,7 +114,13 @@ function getStatus(event){
 function montaButton(id){
     var btn = document.createElement("Button");
     var lbl = document.createTextNode("Editar");        
-    btn.appendChild(lbl); 
+    const i = document.createElement("icon");
+    i.classList.add("fas")
+    i.classList.add("fa-edit")
+    i.readOnly
+         
+
+    btn.appendChild(i);
    
     btn.classList.add("info-edit")
     btn.id = "edit" + id 

@@ -50,7 +50,7 @@ app.use(function(req, res, next) {
 //Cria o banco de dados
 //{force:true} Drop tables se ja existirem
 models.sequelize
-  .sync()
+  .sync({force:true})
   .then(() => {
     console.log("Nice! Database looks fine");
     app.listen(3000, function(err) {
