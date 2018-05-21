@@ -1,6 +1,11 @@
 var orcamento = [];
 var pathname = window.location.pathname;
 
+$(document).ready(function(){
+  $('#cnpj').mask('00.000.000/0000-00');
+  $('#valor').mask('000000000.00', {reverse: true})
+});
+
 $.getJSON(
   "/backend/solicitacoes/" + pathname.split("/")[2] + "/orcamentos",
   data => {
@@ -24,12 +29,16 @@ $.getJSON(
     });
 
     $("#add-orcamento").click(function() {
-      orcamento.push({
-        cnpj_fornecedor: $("#cnpj").val(),
-        nome_fornecedor: $("#nome").val(),
-        valor: $("#valor").val(),
-        origem: $("#ref").val()
-      });
+
+      var orc = {
+          cnpj_fornecedor: $("cnpj").val(),
+          nome_fornecedor: $("#nome").val(),
+          valor: $("#valor").val(),
+          origem: $("#ref").val()
+      }
+
+      orcamento.push(orc);
+      
       console.log(orcamento);
       if (orcamento.length >= 5) {
         $(this).removeClass("btn-success");
@@ -37,10 +46,10 @@ $.getJSON(
         $("fieldset").prop("disabled", true);
       }
       var tr = document.createElement("tr");
-      $(tr).append("<td>" + $("#cnpj").val() + "</td>");
-      $(tr).append("<td>" + $("#nome").val() + "</td>");
-      $(tr).append("<td>" + $("#valor").val() + "</td>");
-      $(tr).append("<td>" + $("#ref").val() + "</td>");
+      $(tr).append("<td>" + orc.cnpj_fornecedor + "</td>");
+      $(tr).append("<td>" + orc.nome_fornecedor + "</td>");
+      $(tr).append("<td>" + orc.valor + "</td>");
+      $(tr).append("<td>" + orc.origem + "</td>");
       $(tr).append("<td>" + $("#pdf").val() + "</td>");
       $(tr).append(
         "<td><button class='btn btn-danger btn-sm delete-row' data-toggle='modal' data-target='#modal-delete'><i class='fas fa-trash-alt'></i></button></td>"

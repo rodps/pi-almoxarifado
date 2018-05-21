@@ -2,6 +2,14 @@ var express = require("express");
 var router = express.Router();
 var models = require("../models");
 var passport = require("passport");
+var middleware = require("../middleware");
+
+router.get("/", middleware.isLoggedIn, (req, res) => {
+  if(req.user.adm)
+    res.redirect("/requisicoes");
+  else
+    res.redirect("/solicitacoes");
+})
 
 router.get("/signup", (req, res) => {
   res.render("autenticacao/signup");

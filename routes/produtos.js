@@ -1,7 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var models = require("../models");
-const isLoggedIn = require("../middleware/index").isLoggedIn;
+const isLoggedIn = require("../middleware").isLoggedIn;
 
 router.get("/", isLoggedIn, (req, res) => {
   models.produtos.findAll().then(allProdutos => {

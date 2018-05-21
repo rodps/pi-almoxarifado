@@ -67,26 +67,29 @@
 			</div>
 
 			<hr>
+
+			<form action="javascript:void(0);">	
+							<h3 class="my-3">Novo Orçamento: </h3>
+
 			<fieldset>
-				<h3 class="my-3">Novo Orçamento: </h3>
 				<div class="form-row">
 					<div class="form-group col-md-4">
 						<label for="cnpj">CNPJ do fornecedor:</label>
-						<input type="text" class="form-control" id="cnpj" name="cnpj_fornecedor" placeholder="CNPJ">
+						<input type="text" class="form-control" id="cnpj" name="cnpj_fornecedor" placeholder="CNPJ" minlength=18 required>
 					</div>
 					<div class="form-group col-md-5">
 						<label for="nome">Nome do fornecedor:</label>
-						<input type="text" class="form-control" id="nome" name="nome_fornecedor" placeholder="Nome">
+						<input type="text" class="form-control" id="nome" name="nome_fornecedor" placeholder="Nome" required>
 					</div>
 					<div class="form-group col-md-3">
 						<label for="valor">Valor:</label>
-						<input type="number" class="form-control" id="valor" name="valor" placeholder="Valor" min=0>
+						<input type="number" class="form-control" id="valor" name="valor" placeholder="Valor" min=0 step="0.01" required>
 					</div>
 				</div>
 				<div class="form-row">
 					<div class="form-group col-md-7">
 						<label for="ref">Referencia:</label>
-						<input type="text" class="form-control" id="ref" name="ref" placeholder="URL">
+						<input type="text" class="form-control" id="ref" name="ref" placeholder="URL" required>
 					</div>
 					<div class="form-group col-md-5">
 						<label for="pdf">PDF:</label>
@@ -96,7 +99,7 @@
 				<button id="add-orcamento" class="btn btn-success">
 					<i class="fas fa-plus"></i> Adicionar</button>
 			</fieldset>
-
+			</form>
 		</div>
 
 		<!-- Modal -->
