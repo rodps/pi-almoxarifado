@@ -3,6 +3,7 @@ var pathname = window.location.pathname;
 
 $(document).ready(function(){
   $('#cnpj').mask('00.000.000/0000-00');
+
   $('#valor').mask('0000000.00', {reverse: true, placeholder: "0,00"});
 });
 
@@ -27,6 +28,7 @@ $.getJSON(
       thisdata = $(this).attr("data-href");
       window.location.href = thisdata;
     });
+
 
     $("#add-orcamento").click(function(event) {
 
@@ -70,6 +72,7 @@ $.getJSON(
         $("tbody").append(tr);
         calculaPreco();
       }
+
     });
 
     $("tbody").on("click", ".delete-row", function() {
