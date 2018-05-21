@@ -29,16 +29,9 @@ router.get("/new", (req, res) => {
 
 router.get("/:id", (req, res) => {
   models.solicitacoes.findById(req.params.id).then(solicitacao => {
-    models.orcamentos
-      .findAll({
-        where: { solicitacao_id: req.params.id }
-      })
-      .then(orcamentos => {
-        res.render("solicitacoes/ver_solicitacao", {
-          solicitacao: solicitacao,
-          orcamentos: orcamentos
-        });
-      });
+    models.usuarios.findById(solicitacao.usuario_id).then(usuario => {
+      res.render("solicitacoes/ver_solicitacao", { solicitacao: solicitacao, solicitante: usuario.nome });
+    });
   });
 });
 
