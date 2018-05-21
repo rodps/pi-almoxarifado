@@ -3,7 +3,8 @@ var pathname = window.location.pathname;
 
 $(document).ready(function(){
   $('#cnpj').mask('00.000.000/0000-00');
-  $('#valor').mask('000000000.00', {reverse: true})
+
+  $('#valor').mask('0000000.00', {reverse: true, placeholder: "0,00"});
 });
 
 $.getJSON(
@@ -28,34 +29,50 @@ $.getJSON(
       window.location.href = thisdata;
     });
 
-    $("#add-orcamento").click(function() {
 
-      var orc = {
-          cnpj_fornecedor: $("cnpj").val(),
+    $("#add-orcamento").click(function(event) {
+
+      var isValidated = true;
+      $("input").each((i, input) =>{
+        if(input.checkValidity() == false){
+          isValidated = false;
+          return false;
+        }
+      });
+
+      if (isValidated) {
+        const orc = {
+          cnpj_fornecedor: $("#cnpj").val(),
           nome_fornecedor: $("#nome").val(),
           valor: $("#valor").val(),
           origem: $("#ref").val()
+        }
+        orcamento.push(orc);
+
+        $("#cnpj").val("");
+        $("#nome").val("");
+        $("#valor").val("");
+        $("#ref").val("");
+        $("#pdf").val("");
+
+        if (orcamento.length >= 5) {
+          $(this).removeClass("btn-success");
+          $(this).addClass("btn-disabled");
+          $("fieldset").prop("disabled", true);
+        }
+        var tr = document.createElement("tr");
+        $(tr).append("<td>" + orc.cnpj_fornecedor + "</td>");
+        $(tr).append("<td>" + orc.nome_fornecedor + "</td>");
+        $(tr).append("<td>" + orc.valor + "</td>");
+        $(tr).append("<td>" + orc.origem + "</td>");
+        $(tr).append("<td>" + $("#pdf").val() + "</td>");
+        $(tr).append(
+          "<td><button class='btn btn-danger btn-sm delete-row' data-toggle='modal' data-target='#modal-delete'><i class='fas fa-trash-alt'></i></button></td>"
+        );
+        $("tbody").append(tr);
+        calculaPreco();
       }
 
-      orcamento.push(orc);
-      
-      console.log(orcamento);
-      if (orcamento.length >= 5) {
-        $(this).removeClass("btn-success");
-        $(this).addClass("btn-disabled");
-        $("fieldset").prop("disabled", true);
-      }
-      var tr = document.createElement("tr");
-      $(tr).append("<td>" + orc.cnpj_fornecedor + "</td>");
-      $(tr).append("<td>" + orc.nome_fornecedor + "</td>");
-      $(tr).append("<td>" + orc.valor + "</td>");
-      $(tr).append("<td>" + orc.origem + "</td>");
-      $(tr).append("<td>" + $("#pdf").val() + "</td>");
-      $(tr).append(
-        "<td><button class='btn btn-danger btn-sm delete-row' data-toggle='modal' data-target='#modal-delete'><i class='fas fa-trash-alt'></i></button></td>"
-      );
-      $("tbody").append(tr);
-      calculaPreco();
     });
 
     $("tbody").on("click", ".delete-row", function() {
@@ -108,10 +125,8 @@ $.getJSON(
 function calculaPreco() {
   var total = 0;
   orcamento.forEach(o => {
-    total += parseInt(o.valor, 10);
-    console.log(o.valor);
+    total += parseFloat(o.valor);
   });
-  console.log(total);
   var media = total / orcamento.length;
   var precoMinimo = media * 0.6;
   var precoMaximo = media * 1.3;

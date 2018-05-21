@@ -7,15 +7,18 @@ const express = require("express"),
   models = require("./models"),
   middleware = require("./middleware"),
   passportStrategies = require("./config/passport")(models.usuarios),
-  app = express(),
-  loginRouter = require("./routes/login"),
+  moment = require("moment"),
+  methodOverride = require("method-override"),
+  app = express();
+
+const  loginRouter = require("./routes/login"),
   solicitacoesRouter = require("./routes/solicitacoes"),
   produtosRouter = require("./routes/produtos"),
   requisicoesRouter = require("./routes/requisicoes"),
   siorgRouter = require("./routes/siorg");
-const moment = require("moment");
 
 // configuracoes
+app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.set("view engine", "ejs");
@@ -32,6 +35,11 @@ passport.use("local-signin", passportStrategies.localSignin);
 passport.serializeUser(passportStrategies.serialize);
 passport.deserializeUser(passportStrategies.deserialize);
 
+app.use(function(req, res, next) {
+  res.locals.currentUser = req.user;
+  next();
+});
+
 //rotas
 app.use("/", loginRouter);
 app.use("/solicitacoes", solicitacoesRouter);
@@ -41,11 +49,6 @@ app.use("/siorg", siorgRouter);
 
 moment.locale("pt-br");
 app.locals.moment = moment;
-
-app.use(function(req, res, next) {
-  res.locals.user = req.user;
-  next();
-});
 
 //Cria o banco de dados
 //{force:true} Drop tables se ja existirem

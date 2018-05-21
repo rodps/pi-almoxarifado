@@ -10,6 +10,8 @@
 <body>
 	<% include ../partialsAdm/navAdm %>
 
+  <div class="container">
+
     <h1 class="text-center">Nova Solicitação</h1>
 
     <form id="solicitacao" action="/solicitacoes" method="post">
@@ -28,5 +30,7 @@
       <button type="submit" class="btn btn-primary">Enviar</button>
       <a class="btn btn-link" href="/solicitacoes">Cancelar</a>
     </form>
+
+    </div>
 
     <% include ../partials/footer %>

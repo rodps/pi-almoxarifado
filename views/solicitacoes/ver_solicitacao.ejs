@@ -11,81 +11,40 @@
 	<% include ../partialsAdm/navAdm %>
 
   <div class="container">
-    <div class="float-right">
-      <button type="button" class="btn btn-danger btn-sm">
-        <i class="fas fa-trash-alt"></i> Excluir</button>
-      <button type="button" class="btn btn-warning btn-sm">
-        <i class="fas fa-edit"></i> Editar</button>
-    </div>
-
-    <a href="/solicitacoes">Voltar</a>
-    <h3 class="my-3">Informações:</h3>
-
-    <hr>
-
-    <h6>Data:</h6>
-    <p>
-      <%= moment(solicitacao.data).format('LLLL'); %>
-    </p>
-    <h6>Descrição:</h6>
-    <p>
-      <%= solicitacao.descricao %>
-    </p>
-    <h6>Quantidade:</h6>
-    <p>
-      <%= solicitacao.quantidade %>
-    </p>
-    <h6>Justificativa:</h6>
-    <p>
-      <%= solicitacao.justificativa %>
-    </p>
-    <h6>Status:</h6>
-    <p>
-      <%= solicitacao.status %>
-    </p>
-    <hr>
-
-    <a href="/solicitacoes/<%= solicitacao.id %>/orcamentos/edit" class="btn btn-success btn-sm float-right">
-      <i class="fas fa-hand-holding-usd"></i> Editar Orçamento</a>
-    <h3>Orçamento:</h3>
-    <hr>
 
 
-    <table class="table table-bordered table-sm my-3 text-center align-middle">
-      <thead>
-        <tr>
-          <th scope="col">CNPJ</th>
-          <th scope="col">Fornecedor</th>
-          <th scope="col">Valor R$</th>
-          <th scope="col">Referencia</th>
-          <th scope="col">Arquivo</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% if(!(orcamentos === undefined || orcamentos.length == 0)) { %>
-          <% orcamentos.forEach((orcamento) => { %>
-            <tr>
-              <td>
-                <%= orcamento.cnpj_fornecedor %>
-              </td>
-              <td>
-                <%= orcamento.nome_fornecedor %>
-              </td>
-              <td>
-                <%= orcamento.valor %>
-              </td>
-              <td>
-                <%= orcamento.origem %>
-              </td>
-              <td></td>
-            </tr>
-            <% }) %>
-              <% } %>
-      </tbody>
-    </table>
+    <a href="/solicitacoes"><i class="fas fa-angle-left"></i> Voltar</a>
 
+    <ul class="nav nav-tabs my-3 mb-4">
+      <li class="nav-item">
+        <a class="nav-link active" href="#">Informações</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/solicitacoes/<%= solicitacao.id %>/orcamentos/edit">Orçamentos</a>
+      </li>
+    </ul>
 
-    <hr>
+<div class="my-3">
+        <p style="margin: 0"><%= solicitante %></p>
+        <p style="margin: 0"><%= moment(solicitacao.data).format('LLLL'); %></p>
+        <p style="margin: 0"><%= solicitacao.quantidade %> Unidade(s)</p>
+        <span class="badge badge-secondary"><%= solicitacao.status %></span>
+
+        </div>
+      
+
+<div class="mb-5">
+  <h5>Descrição do Produto:</h5>
+  <p align="justify"><%= solicitacao.descricao %></p>
+  <h5>Justificativa:</h5>
+  <p align="justify"><%= solicitacao.justificativa %></p>
+</div>
+
+<form action="/solicitacoes/<%= solicitacao.id %>?_method=DELETE" method="POST">
+  <button type="submit" class="btn btn-danger btn-sm">
+    <i class="fas fa-trash-alt"></i> Excluir Solicitação
+  </button>
+</form>
 
   </div>
 

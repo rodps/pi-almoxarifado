@@ -19,7 +19,7 @@ router.post("/", (req, res) => {
       usuario_id: req.user.id
     })
     .then(solicitacao => {
-      res.redirect("/solicitacoes/" + solicitacao.id + "/orcamentos/edit");
+      res.redirect("/solicitacoes/" + solicitacao.id );
     });
 });
 
@@ -29,16 +29,9 @@ router.get("/new", (req, res) => {
 
 router.get("/:id", (req, res) => {
   models.solicitacoes.findById(req.params.id).then(solicitacao => {
-    models.orcamentos
-      .findAll({
-        where: { solicitacao_id: req.params.id }
-      })
-      .then(orcamentos => {
-        res.render("solicitacoes/ver_solicitacao", {
-          solicitacao: solicitacao,
-          orcamentos: orcamentos
-        });
-      });
+    models.usuarios.findById(solicitacao.usuario_id).then(usuario => {
+      res.render("solicitacoes/ver_solicitacao", { solicitacao: solicitacao, solicitante: usuario.nome });
+    });
   });
 });
 
@@ -75,5 +68,22 @@ router.post("/:id/orcamentos", (req, res) => {
       res.status(200).send("ok");
     });
 });
+
+router.delete('/:id', function(req,res) { 
+
+  console.log("DEUCERTO");
+   
+  models.orcamentos.destroy({
+      where: { solicitacao_id: req.params.id }
+    })
+
+   models.solicitacoes.destroy({
+      where: { id: req.params.id }
+    }).then(() => {
+      res.redirect("/solicitacoes");
+    });
+
+});
+
 
 module.exports = router;
