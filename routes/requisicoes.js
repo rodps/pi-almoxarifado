@@ -17,7 +17,7 @@ router.get("/listar/solicitacoes", function (req, res) {
 
         }],
         where: {
-            [Op.or]: [{ status: "APROVADO" }, { status: "DESERTO" }]
+            [Op.or]: [{ status: "ABERTO" }, { status: "APROVADO" }]
         },
     }).then(solicitacoes => {
         res.send(solicitacoes);
