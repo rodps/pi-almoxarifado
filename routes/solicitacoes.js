@@ -19,7 +19,7 @@ router.post("/", (req, res) => {
       usuario_id: req.user.id
     })
     .then(solicitacao => {
-      res.redirect("/solicitacoes/" + solicitacao.id + "/orcamentos/edit");
+      res.redirect("/solicitacoes/" + solicitacao.id );
     });
 });
 

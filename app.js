@@ -32,6 +32,11 @@ passport.use("local-signin", passportStrategies.localSignin);
 passport.serializeUser(passportStrategies.serialize);
 passport.deserializeUser(passportStrategies.deserialize);
 
+app.use(function(req, res, next) {
+  res.locals.currentUser = req.user;
+  next();
+});
+
 //rotas
 app.use("/", loginRouter);
 app.use("/solicitacoes", solicitacoesRouter);
@@ -42,15 +47,10 @@ app.use("/siorg", siorgRouter);
 moment.locale("pt-br");
 app.locals.moment = moment;
 
-app.use(function(req, res, next) {
-  res.locals.user = req.user;
-  next();
-});
-
 //Cria o banco de dados
 //{force:true} Drop tables se ja existirem
 models.sequelize
-  .sync({force:true})
+  .sync()
   .then(() => {
     console.log("Nice! Database looks fine");
     app.listen(3000, function(err) {

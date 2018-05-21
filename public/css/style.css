@@ -1,7 +1,3 @@
-h1 {
-  margin: 30px;
-}
-
 form {
   margin: 30px;
 }
@@ -14,6 +10,11 @@ form#solicitacao {
 form#menu {
   margin: 10px;
   width: auto;
+}
+
+.container {
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .card {
