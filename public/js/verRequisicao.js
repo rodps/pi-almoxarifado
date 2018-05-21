@@ -47,14 +47,14 @@ function addSolicitacaoNaTabela(solicitacao){
     var botao = document.getElementById("close"+ solicitacao.solicitaco.id)
     botao.addEventListener("click",function(event){
 
-    let id = event.target.solicitacao
-        
-    var json = JSON.stringify(id);
-    var ajax = new XMLHttpRequest()
-    ajax.open("DELETE", "http://localhost:3000/requisicoes/excluir/solicitacao/"+ id, true)
-    ajax.setRequestHeader('Content-type','application/json; charset=utf-8');
-    ajax.send()
-    window.location.reload()
+        let id = event.target.solicitacao
+            
+        var json = JSON.stringify(id);
+        var ajax = new XMLHttpRequest()
+        ajax.open("DELETE", "http://localhost:3000/requisicoes/excluir/solicitacao/"+ id, true)
+        ajax.setRequestHeader('Content-type','application/json; charset=utf-8');
+        ajax.send()
+        window.location.reload()
     })
 
     return

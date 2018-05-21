@@ -69,4 +69,21 @@ router.post("/:id/orcamentos", (req, res) => {
     });
 });
 
+router.delete('/:id', function(req,res) { 
+
+  console.log("DEUCERTO");
+   
+  models.orcamentos.destroy({
+      where: { solicitacao_id: req.params.id }
+    })
+
+   models.solicitacoes.destroy({
+      where: { id: req.params.id }
+    }).then(() => {
+      res.redirect("/solicitacoes");
+    });
+
+});
+
+
 module.exports = router;

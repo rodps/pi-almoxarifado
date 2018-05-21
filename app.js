@@ -7,15 +7,18 @@ const express = require("express"),
   models = require("./models"),
   middleware = require("./middleware"),
   passportStrategies = require("./config/passport")(models.usuarios),
-  app = express(),
-  loginRouter = require("./routes/login"),
+  moment = require("moment"),
+  methodOverride = require("method-override"),
+  app = express();
+
+const  loginRouter = require("./routes/login"),
   solicitacoesRouter = require("./routes/solicitacoes"),
   produtosRouter = require("./routes/produtos"),
   requisicoesRouter = require("./routes/requisicoes"),
   siorgRouter = require("./routes/siorg");
-const moment = require("moment");
 
 // configuracoes
+app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.set("view engine", "ejs");

@@ -39,8 +39,11 @@
   <p align="justify"><%= solicitacao.justificativa %></p>
 </div>
 
-        <button type="button" class="btn btn-danger btn-sm">
-          <i class="fas fa-trash-alt"></i> Excluir Solicitação</button>
+<form action="/solicitacoes/<%= solicitacao.id %>?_method=DELETE" method="POST">
+  <button type="submit" class="btn btn-danger btn-sm">
+    <i class="fas fa-trash-alt"></i> Excluir Solicitação
+  </button>
+</form>
 
   </div>
 
